@@ -18,17 +18,48 @@
     <button v-on:click="setnum()" style="margin: 0px 10px">初始化</button>
     <button v-on:click="setcolor()">改变颜色</button>
     <p ref="p">{{msg}}</p>
+    <button v-on:click="requestData()" @click="Event($event)" data-aid="123">请求数据</button>
+    <ul>
+      <li v-for="(a,key) in list2">
+        {{key}}
+      </li>
+    </ul>
+    <hr>
+    <input type="text" v-model="msg2" placeholder="请输入" @keyup="add($event)">
+    <button @click="add2()" style="margin-left: 10px">添加</button>
+    <p>未勾选</p>
+    <ul>
+      <li v-for="(b,key) in list3" v-if="!b.checked">
+        <input type="checkbox" v-model="b.checked" @change="saveList()">
+        {{b.title}}
+        <button @click="remove(key)" style="margin: 5px">删除</button>
+      </li>
+    </ul>
+    <p>已勾选</p>
+    <ul>
+      <li v-for="(b,key) in list3" v-if="b.checked">
+        <input type="checkbox" v-model="b.checked" @change="saveList()">
+        {{b.title}}
+        <button @click="remove(key)" style="margin: 5px">删除</button>
+      </li>
+    </ul>
+    <hr>
+    <v-index></v-index>
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 
+import storage from './model/storage.js';
+import index from './components/Index.vue';
+
 export default {
   name: 'app',
-  // components: {
-  //   HelloWorld
-  // }
+  components: {
+    // HelloWorld
+    'v-index': index
+  },
   data () {
     return {
       list: [
@@ -51,7 +82,10 @@ export default {
       color: false,
       title: 'www.baidu.com',
       fontsize: 15,
-      msg: ''
+      msg: '',
+      list2: [],
+      list3: [],
+      msg2: ''
     }
   },
   methods: {
@@ -61,6 +95,49 @@ export default {
     },
     setcolor () {
       this.$refs.p.style.color = "#DC38E8"
+    },
+    requestData () {
+      for (var i=0; i<10; i++) {
+        this.list2.push(i)
+      }
+    },
+    Event (e) {
+      console.log(e);
+      e.srcElement.style.backgroundColor = "#3A95BF";
+      console.log(e.srcElement.dataset.aid)
+    },
+    add2 () {
+      this.list3.push({
+        title: this.msg2
+      });
+      this.msg2 = '';
+      // localStorage.setItem('list3', JSON.stringify(this.list3));
+      storage.set('list3', this.list3)
+    },
+    add (e) {
+      if (e.keyCode == 13) {
+        this.list3.push({
+          title: this.msg2
+        });
+        this.msg2 = ''
+      };
+      // localStorage.setItem('list3', JSON.stringify(this.list3));
+      storage.set('list3', this.list3)
+    },
+    remove (key) {
+      this.list3.splice(key,1);
+      // localStorage.setItem('list3', JSON.stringify(this.list3));
+      storage.set('list3', this.list3)
+    },
+    saveList () {
+      storage.set('list3', this.list3)
+    }
+  },
+  mounted () {  /*生命周期函数*/
+    // var list3 = JSON.parse(localStorage.getItem('list3'));
+    var list3  = storage.get('list3');
+    if (list3) {  /*判断是否为空*/
+      this.list3 = list3
     }
   }
 }
@@ -75,6 +152,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }*/
+  li {
+    list-style: none;
+  }
   .bd {
     text-decoration: none;
   }
