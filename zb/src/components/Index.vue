@@ -16,6 +16,10 @@
 			changeColor () {
 				this.$refs.p.style.color = '#DE3D3D'
 			}
+		},
+		// props: ['msg'],
+		mounted () {
+			this.$route.query
 		}
 	}
 </script>

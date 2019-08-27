@@ -44,7 +44,9 @@
       </li>
     </ul>
     <hr>
-    <v-index></v-index>
+    <!-- <v-index :msg="msg3"></v-index> -->
+    <router-link :to="'/index?id=' + msg3">组件</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -52,14 +54,14 @@
 // import HelloWorld from './components/HelloWorld.vue'
 
 import storage from './model/storage.js';
-import index from './components/Index.vue';
+// import index from './components/Index.vue';
 
 export default {
   name: 'app',
-  components: {
-    // HelloWorld
-    'v-index': index
-  },
+  // components: {
+  //   // HelloWorld
+  //   'v-index': index
+  // },
   data () {
     return {
       list: [
@@ -85,7 +87,8 @@ export default {
       msg: '',
       list2: [],
       list3: [],
-      msg2: ''
+      msg2: '',
+      msg3: '组件'
     }
   },
   methods: {
