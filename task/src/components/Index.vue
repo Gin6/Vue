@@ -1,7 +1,7 @@
 <template>
   <div>
   <el-carousel :style="{ height: height }" direction="vertical" :autoplay="false">
-    <el-carousel-item v-for="item in background">
+    <el-carousel-item v-for="(item, bkey) in background">
       <img :src="item.src" alt="background">
     </el-carousel-item>
   </el-carousel>
@@ -29,38 +29,24 @@
 	      <el-submenu index="1">
 	        <template slot="title">
 	          <i class="el-icon-location"></i>
-	          <span>导航一</span>
+	          <span>IOS</span>
 	        </template>
-	        <el-menu-item-group>
-	          <template slot="title">分组一</template>
-	          <el-menu-item index="1-1">选项1</el-menu-item>
-	          <el-menu-item index="1-2">选项2</el-menu-item>
-	        </el-menu-item-group>
-	        <el-menu-item-group title="分组2">
-	          <el-menu-item index="1-3">选项3</el-menu-item>
-	        </el-menu-item-group>
-	        <el-submenu index="1-4">
-	          <template slot="title">选项4</template>
-	          <el-menu-item index="1-4-1">选项1</el-menu-item>
-	        </el-submenu>
+          <!-- IOS机型循环 -->
+            <el-submenu :index="'1-' + key+1" v-for="(ibn, key) in ibrand">
+              <template slot="title">{{ibn.name}}</template>
+              <el-menu-item :index="'1-1-' + key+1" v-for="(ibm, key) in ibn.model">{{ibm.title}}</el-menu-item>
+            </el-submenu>
 	      </el-submenu>
 	      <el-submenu index="2">
 	        <template slot="title">
 	          <i class="el-icon-location"></i>
-	          <span>导航一</span>
+	          <span>Android</span>
 	        </template>
-	        <el-menu-item-group>
-	          <template slot="title">分组一</template>
-	          <el-menu-item index="2-1">选项1</el-menu-item>
-	          <el-menu-item index="2-2">选项2</el-menu-item>
-	        </el-menu-item-group>
-	        <el-menu-item-group title="分组2">
-	          <el-menu-item index="2-3">选项3</el-menu-item>
-	        </el-menu-item-group>
-	        <el-submenu index="2-4">
-	          <template slot="title">选项4</template>
-	          <el-menu-item index="2-4-1">选项1</el-menu-item>
-	        </el-submenu>
+          <!-- Android机型循环 -->
+            <el-submenu :index="'2-' + key+1" v-for="(abn, key) in abrand">
+              <template slot="title">{{abn.name}}</template>
+              <el-menu-item :index="'2-1-' + key+1" v-for="(abm, key) in abn.model">{{abm.title}}</el-menu-item>
+            </el-submenu>
 	      </el-submenu>
 	  </el-menu>
   </el-drawer>
@@ -88,11 +74,68 @@ export default {
   		],
   		isCollapse: true,
   		drawer: false,
-        direction: 'ltr',
+      direction: 'ltr',
+      ibrand: [
+        {
+          'name': 'iPhone X',
+          'model': [
+            { 'title': 'iPhone XS' },
+            { 'title': 'iPhone XS Max' },
+            { 'title': 'iPhone XR' },
+            { 'title': 'iPhone X' }
+          ]
+        },
+        {
+          'name': 'iPhone 6/6s/7/8 Plus',
+          'model': [
+            { 'title': 'iPhone 8 Plus' },
+            { 'title': 'iPhone 7 Plus' },
+            { 'title': 'iPhone 6s Plus' },
+            { 'title': 'iPhone 6 Plus' }
+          ]
+        },
+        {
+          'name': 'iPhone 6/6s/7/8',
+          'model': [
+            { 'title': 'iPhone 8' },
+            { 'title': 'iPhone 7' },
+            { 'title': 'iPhone 6s' },
+            { 'title': 'iPhone 6' }
+          ]
+        },
+        {
+          'name': 'iPhone SE',
+          'model': [
+            { 'title': 'iPhone SE' },
+            { 'title': 'iPhone 5s' },
+            { 'title': 'iPhone 5' }
+          ]
+        },
+      ],
+      abrand: [
+        {
+          'name': '小米',
+          'model': [
+            { 'title': 'Xiaomi 9' },
+            { 'title': 'Xiaomi 8' },
+            { 'title': 'Xiaomi 6' },
+            { 'title': 'Xiaomi 5' }
+          ]
+        },
+        {
+          'name': '华为',
+          'model': [
+            { 'title': 'P20 Pro' },
+            { 'title': 'Honnor 6X' },
+            { 'title': 'Honnor 5X' },
+            { 'title': 'Honnor 4X' }
+          ]
+        }
+      ]
   	}
   },
   created () {
-  	this.screenHeight()
+  	this.screenHeight();
   },
   methods: {
   	screenHeight () {
@@ -155,5 +198,27 @@ export default {
   			}
   		}
   	}
+  }
+</style>
+
+<style lang="scss">
+  .el-carousel__container {
+    height: 100%;
+  }
+  .el-drawer__close-btn {
+    outline: none;
+  }
+  .el-drawer__header {
+    text-align: center;
+    font-size: 20px;
+    span {
+      font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Î¢ÈíÑÅºÚ",Arial,sans-serif;
+    }
+  }
+  .el-drawer {
+    overflow: auto;
+  }
+  .el-drawer::-webkit-scrollbar {
+    display: none;
   }
 </style>

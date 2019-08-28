@@ -7,7 +7,7 @@
 
 <script>
 import Index from './components/Index.vue'
-import button from './components/button.vue'
+import button from './components/Ripplebutton.vue'
 
 export default {
   name: 'app',
@@ -22,8 +22,5 @@ export default {
   body {
   	margin: 0px;
   	padding: 0px;
-  }
-  .el-carousel__container {
-  	height: 100%;
   }
 </style>

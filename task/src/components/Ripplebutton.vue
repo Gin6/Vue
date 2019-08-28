@@ -1,9 +1,12 @@
 <template>
-  <div class="button" @click="wavesEffect">
-    <p>水波纹效果</p>
-    <div class="wavesbtn" ref="wavesbtn"></div>
+  <div class="box">
+    <div class="button" @click="wavesEffect">
+      <p>Shop Now<i class="el-icon-right"></i></p>
+      <div class="wavesbtn" ref="wavesbtn"></div>
+    </div>
   </div>
 </template>
+
 <script>
 export default {
   methods: {
@@ -41,26 +44,35 @@ export default {
   }
 };
 </script>
-<style scoped>
+
+<style lang="scss" scoped>
+.box {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  right: 0px;
+  top: 50%;
+}
 .button {
-  width: 150px;
+  width: 200px;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 8px;
   line-height: 50px;
   text-align: center;
-  border: 1px solid red;
-  position: relative;
-  overflow: hidden;
-}
-p {
-  width: 100%;
-  line-height: 48px;
+  border: 1px solid #d24343e0;
   position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
+  top: 0px;
+  left: -100px;
+  z-index: 2;
+  overflow: hidden;
+  p {
+    margin: 0px;
+    font-size: 20px;
+    i {
+      margin-left: 15px;
+    }
+  }
 }
-
 .wavesbtn {
   width: 100%;
   height: 100%;
@@ -69,14 +81,15 @@ p {
   top: 0;
 }
 </style>
-<style>
+
+<style lang="scss">
 .effect {
   position: absolute;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   transition: all 0.7s ease-out;
-  background: #ff83fa;
+  background: #e4e4e46e;
   transform: scale(0);
   transition-property: transform, opacity, -webkit-transform;
   opacity: 1;
