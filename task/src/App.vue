@@ -1,28 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-index></v-index>
+    <v-button></v-button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Index from './components/Index.vue'
+import button from './components/button.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    'v-index': Index,
+    'v-button': button
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  body {
+  	margin: 0px;
+  	padding: 0px;
+  }
+  .el-carousel__container {
+  	height: 100%;
+  }
 </style>
