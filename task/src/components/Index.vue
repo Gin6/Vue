@@ -86,10 +86,10 @@ export default {
   				'src': '/img/iPhone2.jpg'
   			},
   			{
-  				'src': '/img/sony.jpg'
+  				'src': '/img/xiaomi.jpg'
   			},
   			{
-  				'src': '/img/xiaomi.jpg'
+  				'src': '/img/sony.jpg'
   			}
   		],
   		isCollapse: true,

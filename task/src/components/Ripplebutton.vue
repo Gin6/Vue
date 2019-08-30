@@ -13,15 +13,17 @@
       :visible.sync="drawer"
       :direction="direction"
       :before-close="handleClose">
+      <v-main></v-main>
     </el-drawer>
   </div>
 </template>
 
 <script>
+import main from './Main.vue'
 
 export default {
   components: {
-    
+    'v-main': main
   },
   data() {
     return {
