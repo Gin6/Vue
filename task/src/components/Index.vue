@@ -1,7 +1,7 @@
 <template>
   <div>
-  <el-carousel :style="{ height: height }" direction="vertical" :autoplay="false">
-    <el-carousel-item v-for="(item, bkey) in background">
+  <el-carousel :style="{ height: height }" direction="vertical" :autoplay="false">  <!-- 跑马灯 -->
+    <el-carousel-item v-for="(item, key) in background">
       <img :src="item.src" alt="background">
     </el-carousel-item>
   </el-carousel>
@@ -11,16 +11,32 @@
   	</div>
   	<h2>MYPHONE</h2>
   	<div class="header-icon">
-  		<a href=""><i class="el-icon-user"></i></a>
-	  	<a><i class="el-icon-search"></i></a>
-	  	<a href=""><i class="el-icon-shopping-cart-2"></i></a>
+  		<a @click="dialogVisible = true"><i class="el-icon-user"></i></a>
+	  	<a @click="drawerttb = true" type="primary"><i class="el-icon-search"></i></a>
+	  	<a :plain="true" @click="open3"><i class="el-icon-shopping-cart-2"></i></a>
   	</div>
   </div>
+  <el-dialog
+	  :visible.sync="dialogVisible"
+	  width="25%">  <!-- 登录 -->
+	  <v-login></v-login>
+	  <span slot="footer" class="dialog-footer">
+	  </span>
+  </el-dialog>
   <el-drawer
-	  title="手机品牌"
+      :visible.sync="drawerttb"
+      :direction="directionttb"
+      :before-close="handleClose"
+      :show-close="showclose"
+      :modal="modalttb"
+      :custom-class="eldrawerttb">  <!-- 搜索框 -->
+      <v-search></v-search>
+  </el-drawer>
+  <el-drawer
+	  title="Mobile Phone Brands"
 	  :visible.sync="drawer"
 	  :direction="direction"
-	  :before-close="handleClose">
+	  :before-close="handleClose">  <!-- 侧栏 -->
 	  <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
@@ -54,27 +70,37 @@
 </template>
 
 <script>
+import login from './Login.vue'
+import search from './Search.vue'
 
 export default {
   components: {
+  	'v-login': login,
+  	'v-search': search
   },
   data () {
   	return {
   		height: '',
   		background: [
   			{
+  				'src': '/img/iPhone2.jpg'
+  			},
+  			{
   				'src': '/img/sony.jpg'
   			},
   			{
-  				'src': '/img/iPhone.jpg'
-  			},
-  			{
-  				'src': '/img/pixel.jpg'
+  				'src': '/img/xiaomi.jpg'
   			}
   		],
   		isCollapse: true,
   		drawer: false,
+  		drawerttb: false,
+  		dialogVisible: false,
+  		showclose: false,
+  		modalttb: false,
+  		eldrawerttb: "eldrawerttb",
       direction: 'ltr',
+      directionttb: 'ttb',
       ibrand: [
         {
           'name': 'iPhone X',
@@ -134,13 +160,20 @@ export default {
       ]
   	}
   },
-  created () {
+  created () { //页面加载前生命周期函数
   	this.screenHeight();
   },
   methods: {
-  	screenHeight () {
+  	screenHeight () { //index页面高度窗口自适应
   		this.height = window.innerHeight + 'px';
   	},
+  	open3() {
+        this.$message({
+          message: '抱歉 , 该功能暂未开放',
+          type: 'warning',
+          center: true
+        });
+    },
   }
 }
 </script>
@@ -210,15 +243,41 @@ export default {
   }
   .el-drawer__header {
     text-align: center;
-    font-size: 20px;
+    font-size: 22px;
+    height: 8%;
     span {
       font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Î¢ÈíÑÅºÚ",Arial,sans-serif;
     }
+  }
+  .ltr {
+  	width: 27%!important;
   }
   .el-drawer {
     overflow: auto;
   }
   .el-drawer::-webkit-scrollbar {
     display: none;
+  }
+  .el-dialog {
+  	height: 40%;
+  	margin-top: 15%!important;
+  	border-radius: 20px;
+  	.el-dialog__body {
+  		padding: 20px 30px;
+  	}
+  }
+  .el-button {
+  	padding: 10px 30px;
+  }
+  .el-button--primary {
+  	margin-right: 20px;
+  	margin-bottom: 10px;
+  }
+  .el-button+.el-button {
+  	margin-left: 0px;
+  }
+  .eldrawerttb {
+  	box-shadow: none;
+  	background-color: #fff0;
   }
 </style>

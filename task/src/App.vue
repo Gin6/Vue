@@ -1,18 +1,17 @@
 <template>
-  <div id="app">
+  <div>
     <v-index></v-index>
     <v-button></v-button>
   </div>
 </template>
 
 <script>
-import Index from './components/Index.vue'
+import index from './components/Index.vue'
 import button from './components/Ripplebutton.vue'
 
 export default {
-  name: 'app',
   components: {
-    'v-index': Index,
+    'v-index': index,
     'v-button': button
   }
 }
