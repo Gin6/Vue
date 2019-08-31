@@ -1,0 +1,22 @@
+.effect {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: all 0.7s ease-out;
+  background: #a7a7a782;
+  transform: scale(0);
+  transition-property: transform, opacity, -webkit-transform;
+  opacity: 1;
+  pointer-events: none;
+}
+.rtl {
+  width: 100%!important;
+  animation: rtl-drawer-out 300ms cubic-bezier(0,0,.2,1) 0s;
+}
+.el-drawer__open .el-drawer.rtl {
+  animation: rtl-drawer-in 500ms cubic-bezier(0,0,.2,1) 0s;
+}
+.el-dialog__wrapper {
+  overflow-x: hidden;
+}

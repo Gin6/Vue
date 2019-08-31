@@ -1,0 +1,195 @@
+.remove {
+  position: absolute;
+  border: none;
+  width: 38px;
+  height: 13px;
+  background: #0000;
+  outline: none;
+  z-index: -1;
+}
+.select {
+  position: relative;
+  left: 5%;
+  width: 90%;
+  height: 300px;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  .select-lr {
+    position: absolute;
+    top: 20px;
+    width: 49%;
+    height: 260px;
+  }
+  .select-left {
+    .pamItem {
+      padding-left: 4%;
+      p {
+        width: 80px;
+      }
+      .pamItem-right {
+        left: 80px;
+      }
+    }
+    .pamItem5, .pamItem6, .pamItem7, .pamItem8, .pamItem9 {
+      position: absolute;
+      top: 0px;
+      left: 100%;
+      width: 100%;
+      z-index: 2;
+      p {
+        width: 100px;
+      }
+      .pamItem-right {
+        left: 100px;
+      }
+    }
+    .pamItem6 {
+      top: 50px;
+    }
+    .pamItem7 {
+      top: 100px;
+    }
+    .pamItem8 {
+      top: 150px;
+    }
+    .pamItem9 {
+      top: 200px;
+    }
+  }
+  .select-right {
+    right: 0px;
+    padding-left: 2%;
+    border-left: 1px solid #eee;
+  }
+}
+.pamItem {
+  position: relative;
+  height: 50px;
+  p {
+    padding: 14px 0px;
+    margin: 0px;
+    text-align: right;
+    color: #72767b;
+  }
+  .pamItem-right {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    margin-left: 4%;
+    overflow: auto;
+  }
+  .pamItem-right::-webkit-scrollbar {/*滚动条整体样式*/
+    // width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+    // height: 4px;
+    display: none;     /*不显示滚动条*/
+  }
+  .pamItem-right::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+      border-radius: 5px;
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.2);
+  }
+  .pamItem-right::-webkit-scrollbar-track {/*滚动条里面轨道*/
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0);
+      border-radius: 0;
+      background: rgba(0,0,0,0);
+  }
+  .el-button {
+    padding: 17px 12px;
+  }
+}
+.el-button--text {
+  color: #409effd4;
+}
+.main {
+  position: relative;
+  width: 90%;
+  margin: 40px 5%;
+  border-left: 1px solid #F8F8FA;
+  border-right: 1px solid #F8F8FA;
+}
+.time {
+    font-size: 13px;
+    color: #999;
+  }  
+.bottom {
+  margin-top: 13px;
+  line-height: 12px;
+}
+.button {
+  padding: 0;
+  float: right;
+}
+.image {
+  width: 100%;
+  display: block;
+}
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+.clearfix:after {
+    clear: both
+}
+.el-col-8 {
+  width: 15%;
+  margin: 4% 0 0 4%;
+}
+.el-menu {
+  padding-left: 4%;
+  background-color: #F8F8FA;
+  .el-menu-item {
+    padding: 0px 2%;
+  }
+}
+.el-menu-item:hover {
+  background-color: #F8F8FA!important;
+}
+.el-menu-item:focus {
+  background-color: #F8F8FA!important;
+}
+.el-menu--popup {
+  .el-menu-item {
+    padding: 0px 13px;
+  }
+}
+.el-pagination {
+  position: absolute;
+  top: 16px;
+  right: 5%;
+}
+.el-card {
+  border: none;
+}
+.phone-nt:hover {
+  color: #ff0e00;
+}
+.phonetitle {
+  position: absolute;
+  left: 0px;
+  top: 30px;
+  padding: 14px;
+  font-size: 12px;
+  text-indent:25px;
+}
+.el-card-main {
+  position: relative;
+  padding: 14px;
+  height: 90px;
+}
+.image {
+  margin-bottom: 10px;
+  transition: all 0.6s;
+}
+.image:hover{
+  transform: scale(1.1);
+}
+.el-rate {
+  position: absolute;
+  bottom: 0px;
+}
+.el-checkbox {
+  position: absolute;
+  bottom: 0px;
+  right: 15px;
+}

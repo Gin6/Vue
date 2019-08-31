@@ -36,7 +36,8 @@
 	  title="Mobile Phone Brands"
 	  :visible.sync="drawer"
 	  :direction="direction"
-	  :before-close="handleClose">  <!-- 侧栏 -->
+	  :before-close="handleClose"
+    :destroy-on-close="destroyonclose">  <!-- 侧栏 -->
 	  <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
@@ -83,13 +84,13 @@ export default {
   		height: '',
   		background: [
   			{
-  				'src': '/img/iPhone2.jpg'
+  				'src': '/img/Background-image/iPhone2.jpg'
   			},
   			{
-  				'src': '/img/xiaomi.jpg'
+  				'src': '/img/Background-image/xiaomi.jpg'
   			},
   			{
-  				'src': '/img/sony.jpg'
+  				'src': '/img/Background-image/sony.jpg'
   			}
   		],
   		isCollapse: true,
@@ -98,6 +99,7 @@ export default {
   		dialogVisible: false,
   		showclose: false,
   		modalttb: false,
+      destroyonclose: true,
   		eldrawerttb: "eldrawerttb",
       direction: 'ltr',
       directionttb: 'ttb',
@@ -178,106 +180,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  .header {
-  	position: absolute;
-  	width: 50%;
-  	top: 3%;
-  	right: 0px;
-  	z-index: 2;
-  	h2 {
-  		position: relative;
-  		width: 300px;
-  		right: 150px;
-  		text-align: center;
-  		font-size: 50px;
-  		font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Î¢ÈíÑÅºÚ",Arial,sans-serif;
-  	}
-  	.header-icon {
-  		position: absolute;
-  		width: 100%;
-  		top: 40%;
-  		right: 0px;
-  		text-align: center;
-  		i {
-  			font-size: 25px;
-  			margin: 0px 20px;
-  			color: #000;
-  			transition: 0.3s;
-			-moz-transition: 0.3s;	/* Firefox 4 */
-			-webkit-transition: 0.3s;	/* Safari ºÍ Chrome */
-			-o-transition: 0.3s;	/* Opera */
-  			&:hover {
-  				color: #c30a0a;
-  				transition: 0.3s;
-				-moz-transition: 0.3s;	/* Firefox 4 */
-				-webkit-transition: 0.3s;	/* Safari ºÍ Chrome */
-				-o-transition: 0.3s;	/* Opera */
-  			}
-  		}
-  	}
-  	.header-b {
-  		position: absolute;
-  		top: 38%;
-  		left: -100%;
-  		width: 100%;
-  		text-align: center;
-  		button {
-  			background: #0000;
-  			border: none;
-  			outline: none;
-  			i {
-  				font-size: 30px;
-  			}
-  		}
-  	}
-  }
-</style>
-
+<style lang="scss" scoped src="../../public/css/index.scss"></style>
 <style lang="scss">
-  .el-carousel__container {
-    height: 100%;
-  }
-  .el-drawer__close-btn {
-    outline: none;
-  }
-  .el-drawer__header {
-    text-align: center;
-    font-size: 22px;
-    height: 8%;
-    span {
-      font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Î¢ÈíÑÅºÚ",Arial,sans-serif;
-    }
-  }
-  .ltr {
-  	width: 27%!important;
-  }
-  .el-drawer {
-    overflow: auto;
-  }
-  .el-drawer::-webkit-scrollbar {
-    display: none;
-  }
-  .el-dialog {
-  	height: 40%;
-  	margin-top: 15%!important;
-  	border-radius: 20px;
-  	.el-dialog__body {
-  		padding: 20px 30px;
-  	}
-  }
-  .el-button {
-  	padding: 10px 30px;
-  }
-  .el-button--primary {
-  	margin-right: 20px;
-  	margin-bottom: 10px;
-  }
-  .el-button+.el-button {
-  	margin-left: 0px;
-  }
-  .eldrawerttb {
-  	box-shadow: none;
-  	background-color: #fff0;
-  }
+  @import '/css/index.css';
 </style>

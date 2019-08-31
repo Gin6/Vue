@@ -1,37 +1,78 @@
 <template>
-  <div class="select">
-    <div class="select-left select-lr">
-      <div class="pamItem" v-for="(msg3, key) in msg3" :class="'pamItem'+key">
-        <p>{{msg3.title}}</p>
-        <div class="pamItem-right">
-          <el-button type="text" v-for="(list, key2) in msg3.list" @click="add(list, key, key2); set()" :id="msg2[key]+key2" :class="msg2[key]">{{list}}</el-button>
+  <div>
+    <div class="select">
+      <div class="select-left select-lr">
+        <div class="pamItem" v-for="(msg3, key) in msg3" :class="'pamItem'+key">
+          <p>{{msg3.title}}</p>
+          <div class="pamItem-right">
+            <el-button type="text" v-for="(list, key2) in msg3.list" @click="add(list, key, key2); set()" :id="msg2[key]+key2" :class="msg2[key]">{{list}}</el-button>
+          </div>
         </div>
       </div>
+      <div class="select-right select-lr"></div>
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <button class="remove" @click="remove()"></button>
+        <el-breadcrumb-item>全部</el-breadcrumb-item>
+        <el-breadcrumb-item v-for="msg in msg">{{msg}}</el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
-    <div class="select-right select-lr"></div>
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <button class="remove" @click="remove()"></button>
-      <el-breadcrumb-item>全部</el-breadcrumb-item>
-      <el-breadcrumb-item v-for="msg in msg">{{msg}}</el-breadcrumb-item>
-    </el-breadcrumb>
+    <div class="main">
+      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu-item index="1">综合</el-menu-item>
+        <el-menu-item index="2">评分</el-menu-item>
+        <el-submenu index="3">
+          <template slot="title">价格</template>
+          <el-menu-item index="3-1">从高到低</el-menu-item>
+          <el-menu-item index="3-2">从低到高</el-menu-item>
+        </el-submenu>
+      </el-menu>
+      <el-pagination
+        small
+        layout="prev, pager, next"
+        :total="50">
+      </el-pagination>
+      <el-col :span="8" v-for="(o, index) in 15" :key="o" :offset="index > 0 ? 15 : 0">
+        <el-card :body-style="{ padding: '0 0 15px 0' }" shadow="hover">
+          <img src="/img/Moblie-phone/小米/CC9/cover_1.jpg" class="image">
+          <span style="padding-left: 10px; color: #ff0e00;">￥2599</span>
+          <div class="el-card-main">
+            <a class="phonename phone-nt" style="font-size: 13px;">小米(MI) 小米CC9</a>
+            <a class="phonetitle phone-nt">美图定制版 屏幕指纹 3200万美颜自拍 4800万超广角三摄</a>
+            <el-rate
+              v-model="value"
+              disabled
+              show-score
+              text-color="#ff9900"
+              score-template="{value}">
+            </el-rate>
+            <el-checkbox label="对比"></el-checkbox>
+          </div>
+        </el-card>
+      </el-col>
+    </div>
+    <v-footer></v-footer>
   </div>
 </template>
 
 <script>
+import footer from './Footer.vue'
 
 export default {
   components: {
-
+    'v-footer': footer
   },
   data () {
     return {
+      value: 3.7,
+      activeIndex: '1',
+      currentDate: new Date(),
       msg: [],
       msg1: [],
       msg2: ['brand', 'price', 'size', 'unlock', 'screen', 'cpu', 'rom', 'ram', 'front', 'rear', ],
       msg3: [
         {
           'title': '品牌：',
-          'list': ['小米', '华为', '索尼'],
+          'list': ['小米', '华为', '索尼', 'OPPO', 'vivo', '三星', '一加', '魅族', 'realme', '努比亚', '谷歌', '苹果', '荣耀', '红米', '诺基亚', ],
         },
         {
           'title': '价格：',
@@ -51,7 +92,7 @@ export default {
         },
         {
           'title': 'CPU型号：',
-          'list': ['骁龙835', '骁龙845', '骁龙855'],
+          'list': ['骁龙855', '骁龙845', '骁龙8535', '骁龙821', '骁龙820', '骁龙730', '骁龙712', '骁龙710', '骁龙675', '骁龙670', '骁龙660', '骁龙653', '骁龙636', '骁龙625', '联发科', '麒麟',],
         },
         {
           'title': 'ROM容量：',
@@ -71,7 +112,7 @@ export default {
         }
       ],
     }
-  },
+  },  
   methods: {
     add (e, k, y) {
       var m = this.msg;
@@ -94,7 +135,7 @@ export default {
         m.splice(l, 1);
       };
       
-      // 测试
+      // 测试面包屑
       // console.log(c);
       // for (var j = 0; j < m.length; j++) {
       //   console.log("第"+ (j+1) +"个元素："+ m[j] + u[j]);
@@ -116,110 +157,16 @@ export default {
       a.style.cssText = "z-index: -1;";
       this.msg.splice(0, l);
       this.msg1.splice(0, k);
-    }
+    },
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+    },
   }
-};
+}
 
 </script>
 
-<style lang="scss" scoped>
-  .remove {
-    position: absolute;
-    border: none;
-    width: 38px;
-    height: 13px;
-    background: #0000;
-    outline: none;
-    z-index: -1;
-  }
-  .select {
-    position: relative;
-    left: 5%;
-    width: 90%;
-    height: 300px;
-    border-radius: 4px;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    .select-lr {
-      position: absolute;
-      top: 20px;
-      width: 49%;
-      height: 260px;
-    }
-    .select-left {
-      .pamItem {
-        padding-left: 4%;
-        p {
-          width: 80px;
-        }
-        .pamItem-right {
-          left: 80px;
-        }
-      }
-      .pamItem5, .pamItem6, .pamItem7, .pamItem8, .pamItem9 {
-        position: absolute;
-        top: 0px;
-        left: 100%;
-        width: 100%;
-        z-index: 2;
-        p {
-          width: 100px;
-        }
-        .pamItem-right {
-          left: 100px;
-        }
-      }
-      .pamItem6 {
-        top: 50px;
-      }
-      .pamItem7 {
-        top: 100px;
-      }
-      .pamItem8 {
-        top: 150px;
-      }
-      .pamItem9 {
-        top: 200px;
-      }
-    }
-    .select-right {
-      right: 0px;
-      padding-left: 2%;
-      border-left: 1px solid #eee;
-    }
-  }
-  .pamItem {
-    position: relative;
-    height: 50px;
-    p {
-      padding: 14px 0px;
-      margin: 0px;
-      text-align: right;
-      color: #72767b;
-    }
-    .pamItem-right {
-      position: absolute;
-      top: 0px;
-      height: 100%;
-      margin-left: 4%;
-    }
-    .el-button {
-      padding: 17px 12px;
-    }
-  }
-  .el-button--text {
-    color: #409effd4;
-  }
-</style>
+<style lang="scss" scoped src="../../public/css/main.scss"></style>
 <style lang="scss">
-  .el-button--text:hover span {
-    color: #409eff;
-    border-bottom: 1px solid #ff7878;
-  }
-  .el-breadcrumb {
-    position: absolute;
-    top: -35px;
-  }
-  .remove:hover + .el-breadcrumb__item > .el-breadcrumb__inner {
-    color: rgba(64, 158, 255, 0.83);
-  }
+  @import '/css/main.css';
 </style>

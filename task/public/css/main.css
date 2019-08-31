@@ -1,0 +1,39 @@
+.el-drawer__body {
+  margin-bottom: 200px;
+}
+.el-button--text:hover span {
+  color: #409eff;
+  border-bottom: 1px solid #ff7878;
+}
+.el-breadcrumb {
+  position: absolute;
+  top: -35px;
+}
+.remove:hover + .el-breadcrumb__item > .el-breadcrumb__inner {
+  color: rgba(64, 158, 255, 0.83);
+}
+.el-menu.el-menu--horizontal {
+  border: none;
+}
+.el-submenu__title:hover {
+  background-color: #F8F8FA!important;
+}
+.el-menu--popup {
+  min-width: 87px;
+}
+.el-pagination button:disabled {
+  background-color: #fff0;
+}
+.el-pager li {
+  background: #fff0;
+}
+.btn-next {
+  background: center center no-repeat #fff0!important;
+}
+.btn-prev {
+  background: center center no-repeat #fff0!important;
+}
+.el-drawer__body>* {
+	position: relative;
+	height: 100%;
+}

@@ -1,0 +1,53 @@
+.header {
+	position: absolute;
+	width: 50%;
+	top: 3%;
+	right: 0px;
+	z-index: 2;
+	h2 {
+		position: relative;
+		width: 300px;
+		right: 150px;
+		text-align: center;
+		font-size: 50px;
+		font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Î¢ÈíÑÅºÚ",Arial,sans-serif;
+	}
+	.header-icon {
+		position: absolute;
+		width: 100%;
+		top: 40%;
+		right: 0px;
+		text-align: center;
+		i {
+			font-size: 25px;
+			margin: 0px 20px;
+			color: #000;
+			transition: 0.3s;
+		-moz-transition: 0.3s;	/* Firefox 4 */
+		-webkit-transition: 0.3s;	/* Safari ºÍ Chrome */
+		-o-transition: 0.3s;	/* Opera */
+			&:hover {
+				color: #c30a0a;
+				transition: 0.3s;
+			-moz-transition: 0.3s;	/* Firefox 4 */
+			-webkit-transition: 0.3s;	/* Safari ºÍ Chrome */
+			-o-transition: 0.3s;	/* Opera */
+			}
+		}
+	}
+	.header-b {
+		position: absolute;
+		top: 38%;
+		left: -100%;
+		width: 100%;
+		text-align: center;
+		button {
+			background: #0000;
+			border: none;
+			outline: none;
+			i {
+				font-size: 30px;
+			}
+		}
+	}
+}

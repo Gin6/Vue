@@ -12,26 +12,40 @@
       title="MYPHONE"
       :visible.sync="drawer"
       :direction="direction"
-      :before-close="handleClose">
+      :before-close="handleClose"
+      :destroy-on-close="destroyonclose"
+      :custom-class="customclass">
       <v-main></v-main>
+      <v-scrolltop></v-scrolltop>
     </el-drawer>
   </div>
 </template>
 
 <script>
 import main from './Main.vue'
+import scrolltop from './ScrollTop.vue'
 
 export default {
   components: {
-    'v-main': main
+    'v-main': main,
+    'v-scrolltop': scrolltop
   },
   data() {
     return {
       drawer: false,
       direction: 'rtl',
+      destroyonclose: true,
+      customclass: 'abc',
     };
   },
+  mounted() {
+     // document.getElementsByClassName('abc')[0].addEventListener('scroll', this.handleScroll)  /*测试滚动条*/
+  },
   methods: {
+    // 测试  获取滚动条高度
+    // handleScroll() {
+    //     console.log(document.getElementsByClassName('abc')[0].scrollTop)
+    // },
     open3() {
       this.$message({
         message: '抱歉 , 该功能暂未开放',
@@ -105,76 +119,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.box {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  right: 0px;
-  top: 50%;
-}
-.button {
-  width: 200px;
-  height: 50px;
-  color: #fff;
-  border-radius: 8px;
-  line-height: 50px;
-  text-align: center;
-  background: #de8989;
-  position: absolute;
-  top: 0px;
-  left: 20px;
-  z-index: 2;
-  overflow: hidden;
-  p {
-    margin: 0px;
-    font-size: 20px;
-    i {
-      margin-left: 15px;
-    }
-  }
-}
-.button1 {
-  left: -220px;
-  color: #000;
-  background: #ffffffdb;
-}
-@mixin wavesbtn {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-.wavesbtn {
-  @include wavesbtn;
-}
-.wavesbtn1 {
-  @include wavesbtn;
-}
-</style>
-
+<style lang="scss" scoped src="../../public/css/ripplebutton.scss"></style>
 <style lang="scss">
-.effect {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  transition: all 0.7s ease-out;
-  background: #a7a7a782;
-  transform: scale(0);
-  transition-property: transform, opacity, -webkit-transform;
-  opacity: 1;
-  pointer-events: none;
-}
-.rtl {
-  width: 100%!important;
-  animation: rtl-drawer-out 300ms cubic-bezier(0,0,.2,1) 0s;
-}
-.el-drawer__open .el-drawer.rtl {
-  animation: rtl-drawer-in 500ms cubic-bezier(0,0,.2,1) 0s;
-}
-.el-dialog__wrapper {
-  overflow-x: hidden;
-}
+  @import '/css/ripplebutton.css';
 </style>
