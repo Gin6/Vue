@@ -9,11 +9,11 @@ Vue.use(VueRouter)
 Vue.use(ElementUI)
 
 // 1、创建组件
-import index from './components/Index.vue'
+import details from './components/Details.vue'
 
 // 2、配置路由
 const routes = [
-	{ path: '/index', component: index },
+	{ path: '/details', component: details },
 	// { path: '*', redirect: 'index' }  /*默认跳转路由*/
 ]
 

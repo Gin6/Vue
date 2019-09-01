@@ -10,7 +10,7 @@
       <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off"></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="submitForm('ruleForm')">注册</el-button>
+      <el-button plain type="primary" @click="submitForm('ruleForm'); open1()">注册</el-button>
       <el-button @click="resetForm('ruleForm')">重置</el-button>
     </el-form-item>
   </el-form>
@@ -79,6 +79,13 @@ export default {
   },
   resetForm(formName) {
    this.$refs[formName].resetFields();
+  },
+  open1() {
+    this.$notify({
+      title: '恭喜',
+      message: '你已经成功注册一个Myphone账号!',
+      type: 'success'
+    });
   }
  }
 }

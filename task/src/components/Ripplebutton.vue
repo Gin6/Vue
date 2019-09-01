@@ -30,7 +30,7 @@ export default {
     'v-main': main,
     'v-scrolltop': scrolltop
   },
-  data() {
+  data () {
     return {
       drawer: false,
       direction: 'rtl',
@@ -38,14 +38,17 @@ export default {
       customclass: 'abc',
     };
   },
-  mounted() {
+  mounted () {
      // document.getElementsByClassName('abc')[0].addEventListener('scroll', this.handleScroll)  /*测试滚动条*/
   },
   methods: {
     // 测试  获取滚动条高度
-    // handleScroll() {
+    // handleScroll () {
     //     console.log(document.getElementsByClassName('abc')[0].scrollTop)
     // },
+    scrollWindow () {
+      this.$children.scrollWindow ();
+    },
     open3() {
       this.$message({
         message: '抱歉 , 该功能暂未开放',

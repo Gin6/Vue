@@ -32,23 +32,28 @@
         :total="50">
       </el-pagination>
       <el-col :span="8" v-for="(o, index) in 15" :key="o" :offset="index > 0 ? 15 : 0">
-        <el-card :body-style="{ padding: '0 0 15px 0' }" shadow="hover">
-          <img src="/img/Moblie-phone/小米/CC9/cover_1.jpg" class="image">
-          <span style="padding-left: 10px; color: #ff0e00;">￥2599</span>
-          <div class="el-card-main">
-            <a class="phonename phone-nt" style="font-size: 13px;">小米(MI) 小米CC9</a>
-            <a class="phonetitle phone-nt">美图定制版 屏幕指纹 3200万美颜自拍 4800万超广角三摄</a>
-            <el-rate
-              v-model="value"
-              disabled
-              show-score
-              text-color="#ff9900"
-              score-template="{value}">
-            </el-rate>
-            <el-checkbox label="对比"></el-checkbox>
-          </div>
+        <el-card :body-style="{ padding: '0 0 15px 0' }" shadow="hover" >
+          <router-link to="details" style="text-decoration: none;">
+            <a @click="scrollWindow()">
+              <img src="/img/Moblie-phone/小米/CC9/cover_1.jpg" class="image">
+              <span style="padding-left: 10px; color: #ff0e00;">￥2599</span>
+              <div class="el-card-main">
+                <a class="phonename phone-nt" style="font-size: 13px;">小米(MI) 小米CC9</a>
+                <a class="phonetitle phone-nt">美图定制版 屏幕指纹 3200万美颜自拍 4800万超广角三摄</a>
+                <el-rate
+                  v-model="value"
+                  disabled
+                  show-score
+                  text-color="#ff9900"
+                  score-template="{value}">
+                </el-rate>
+                <el-checkbox label="对比"></el-checkbox>
+              </div>
+            </a>
+          </router-link>
         </el-card>
       </el-col>
+      <router-view></router-view>
     </div>
     <v-footer></v-footer>
   </div>
@@ -161,6 +166,9 @@ export default {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
     },
+    scrollWindow () {
+      document.getElementsByClassName('abc')[0].scrollTo(0, 424);
+    }
   }
 }
 

@@ -30,7 +30,7 @@
         cancelAnimationFrame(timer)
         timer = requestAnimationFrame(function fn() {
           if (_that.scrollTop > 0) {
-            _that.scrollTop -= 50
+            _that.scrollTop -= 100
             document.getElementsByClassName('abc')[0].scrollTop = _that.scrollTop
             timer = requestAnimationFrame(fn)
           } else {

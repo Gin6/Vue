@@ -10,7 +10,7 @@
             <el-input type="password" v-model="ruleForm.pass" auto-complete="off"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+            <el-button plan type="primary" @click="submitForm('ruleForm'); open1()">登录</el-button>
             <el-button @click="resetForm('ruleForm')">重置</el-button>
           </el-form-item>
         </el-form>
@@ -81,6 +81,13 @@ export default {
     }
    });
   },
+  open1() {
+    this.$notify({
+      title: '成功',
+      message: '欢迎您 , ' + this.ruleForm.name + ' !',
+      type: 'success'
+    });
+  }
  },
 }
 </script>
