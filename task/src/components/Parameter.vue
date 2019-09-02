@@ -1,31 +1,14 @@
 <template>
   <el-collapse v-model="activeNames" @change="handleChange">
     <el-collapse-item title="基本参数 - Basic parameters" name="1">
-      <el-table
-      :data="tableData"
-      style="width: 100%">
-      <el-table-column
-        prop="date"
-        label="日期"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="姓名"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址">
-      </el-table-column>
-    </el-table>
-    </el-collapse-item>
-    <el-collapse-item title="屏幕 - Screen" name="2">
       <el-card class="box-card">
-        <div v-for="o in 4" :key="o" class="text item">
-          {{'列表内容 ' + o }}
+        <div v-for="a in Basic" :key="a" class="text item">
+          {{a}}
         </div>
       </el-card>
+    </el-collapse-item>
+    <el-collapse-item title="屏幕 - Screen" name="2">
+      
     </el-collapse-item>
     <el-collapse-item title="硬件 - Hardware" name="3"></el-collapse-item>
     <el-collapse-item title="网络与连接 - Network And Connection" name="4"></el-collapse-item>
@@ -59,23 +42,7 @@
     data() {
       return {
         activeNames: ['1'],
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }],
+        Basic: ['上市日期', '电商报价','手机类型', '屏幕类型', '出厂系统内核', '操作系统', '拍照特色', 'CPU型号', '机身颜色', '解锁方式',],
       };
     },
     methods: {

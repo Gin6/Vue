@@ -47,10 +47,10 @@
                   text-color="#ff9900"
                   score-template="{value}">
                 </el-rate>
-                <el-checkbox label="对比"></el-checkbox>
               </div>
             </a>
           </router-link>
+          <el-checkbox label="对比"></el-checkbox>
         </el-card>
       </el-col>
       <router-view></router-view>

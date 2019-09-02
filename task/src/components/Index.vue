@@ -11,17 +11,27 @@
   	</div>
   	<h2>MYPHONE</h2>
   	<div class="header-icon">
-  		<a @click="dialogVisible = true"><i class="el-icon-user"></i></a>
+  		<a @click="dialogVisible = true" style="position: relative;">  <!-- pointer-events: none;禁用点击 -->
+        <i class="el-icon-user"></i>
+        <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+      </a>
 	  	<a @click="drawerttb = true" type="primary"><i class="el-icon-search"></i></a>
 	  	<a :plain="true" @click="open3"><i class="el-icon-shopping-cart-2"></i></a>
+      <a @click="dialogVisible1 = true"><i class="el-icon-setting"></i></a>
   	</div>
   </div>
   <el-dialog
 	  :visible.sync="dialogVisible"
 	  width="25%">  <!-- 登录 -->
 	  <v-login></v-login>
-	  <span slot="footer" class="dialog-footer">
 	  </span>
+  </el-dialog>
+  <el-dialog
+    :visible.sync="dialogVisible1"
+    :custom-class="customclass"
+    width="25%">  <!-- 设置 -->
+    <v-setting></v-setting>
+    </span>
   </el-dialog>
   <el-drawer
       :visible.sync="drawerttb"
@@ -73,11 +83,13 @@
 <script>
 import login from './Login.vue'
 import search from './Search.vue'
+import setting from './Setting.vue'
 
 export default {
   components: {
   	'v-login': login,
-  	'v-search': search
+  	'v-search': search,
+    'v-setting': setting
   },
   data () {
   	return {
@@ -97,12 +109,14 @@ export default {
   		drawer: false,
   		drawerttb: false,
   		dialogVisible: false,
+      dialogVisible1: false,
   		showclose: false,
   		modalttb: false,
       destroyonclose: true,
   		eldrawerttb: "eldrawerttb",
       direction: 'ltr',
       directionttb: 'ttb',
+      customclass: 'dialog',
       ibrand: [
         {
           'name': 'iPhone X',

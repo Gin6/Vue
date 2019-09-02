@@ -119,9 +119,4 @@ export default {
     height: 100%;
     width: 100%;
   }
-  .el-rate {
-    position: absolute;
-    top: -37px;
-    right: 30px;
-  }
 </style>
