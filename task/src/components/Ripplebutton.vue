@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="button button1" @click="wavesEffect1(); open3()" :plain="true">
-      <p>Shop Now</p>
+      <p>Forum</p>
       <div class="wavesbtn1" ref="wavesbtn1"></div>
     </div>
     <div class="button" @click="wavesEffect(); drawer = true" type="primary">

@@ -44,7 +44,8 @@
   background-color: #fff0;
 }
 .dialog {
-  height: 47%;
+  height: 53%;
+  margin-top: 11%!important;
 }
 .el-avatar {
   position: absolute;

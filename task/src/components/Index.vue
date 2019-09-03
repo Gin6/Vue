@@ -16,7 +16,7 @@
         <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
       </a>
 	  	<a @click="drawerttb = true" type="primary"><i class="el-icon-search"></i></a>
-	  	<a :plain="true" @click="open3"><i class="el-icon-shopping-cart-2"></i></a>
+	  	<a :plain="true" @click="open3"><i class="el-icon-star-off"></i></a>
       <a @click="dialogVisible1 = true"><i class="el-icon-setting"></i></a>
   	</div>
   </div>
