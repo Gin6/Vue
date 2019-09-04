@@ -5,7 +5,7 @@
         <div class="pamItem" v-for="(msg3, key) in msg3" :class="'pamItem'+key">
           <p>{{msg3.title}}</p>
           <div class="pamItem-right">
-            <el-button type="text" v-for="(list, key2) in msg3.list" @click="add(list, key, key2); set()" :id="msg2[key]+key2" :class="msg2[key]">{{list}}</el-button>
+            <el-button type="text" v-for="(list, key2) in msg3.list" @click="add(list, key, key2); set(); openFullScreen()" :id="msg2[key]+key2" :class="msg2[key]">{{list}}</el-button>
           </div>
         </div>
       </div>
@@ -31,17 +31,17 @@
         layout="prev, pager, next"
         :total="50">
       </el-pagination>
-      <el-col :span="8" v-for="(o, index) in 15" :key="o" :offset="index > 0 ? 15 : 0">
+      <el-col :span="8" v-for="(o, index) in msg4" :key="o" :offset="index > 0 ? 15 : 0">
         <el-card :body-style="{ padding: '0 0 15px 0' }" shadow="hover" >
-          <router-link to="details" style="text-decoration: none;">
+          <router-link :to="'/details/'+index" style="text-decoration: none;">
             <a @click="scrollWindow()">
-              <img src="/img/Moblie-phone/小米/CC9/cover_1.jpg" class="image">
-              <span style="padding-left: 10px; color: #ff0e00;">￥2599</span>
+              <img :src="o.url" class="image">
+              <span style="padding-left: 10px; color: #ff0e00;">{{o.price}}</span>
               <div class="el-card-main">
-                <a class="phonename phone-nt" style="font-size: 13px;">小米(MI) 小米CC9</a>
-                <a class="phonetitle phone-nt">美图定制版 屏幕指纹 3200万美颜自拍 4800万超广角三摄</a>
+                <a class="phonename phone-nt" style="font-size: 13px;">{{o.title}}</a>
+                <a class="phonetitle phone-nt">{{o.list}}</a>
                 <el-rate
-                  v-model="value"
+                  v-model="value[index]"
                   disabled
                   show-score
                   text-color="#ff9900"
@@ -89,9 +89,10 @@ export default {
   },
   data () {
     return {
+      fullscreenLoading: false,
       isActive: true,
       isError: false,
-      value: 3.7,
+      value: ['3.1', '4.4','4.3',],
       checked: [],
       activeIndex: '1',
       d: true,
@@ -140,6 +141,26 @@ export default {
           'title': '后置摄像头：',
           'list': ['800万像素', '1200万像素', '1300万像素'],
         }
+      ],
+      msg4: [
+        {
+          'url': '/img/Moblie-phone/小米/CC9/cover_1.jpg',
+          'price': '￥2599',
+          'title': '小米(MI) 小米CC9',
+          'list': '美图定制版 屏幕指纹 3200万美颜自拍 4800万超广角三摄',
+        },
+        {
+          'url': '/img/Moblie-phone/魅族/16s/cover_1.jpg',
+          'price': '￥2699',
+          'title': '魅族(MEIZU) 魅族16s',
+          'list': '骁龙855 4800W光学防抖 全面屏',
+        },
+        {
+          'url': '/img/Moblie-phone/一加/OnePlus7/cover_1.jpg',
+          'price': '￥2999',
+          'title': '一加(OnePlus) 一加7',
+          'list': '双扬声器 杜比全景声 4800W摄像头',
+        },
       ],
     }
   },  
@@ -218,7 +239,18 @@ export default {
         this.isActive = true;
         this.isError = false;
       }
-    }
+    },
+    openFullScreen() {
+      const loading = this.$loading({
+        lock: true,
+        text: '加载中...',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      });
+      setTimeout(() => {
+        loading.close();
+      }, 1000);
+    },
   },
 }
 

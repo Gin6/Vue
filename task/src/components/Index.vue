@@ -68,7 +68,7 @@
           <!-- Android机型循环 -->
             <el-submenu :index="'2-' + key+1" v-for="(abn, key) in abrand">
               <template slot="title">{{abn.name}}</template>
-              <el-menu-item :index="'2-1-' + key+1" v-for="(abm, key) in abn.model">{{abm.title}}</el-menu-item>
+              <el-menu-item :index="'2-1-' + key+1" v-for="(abm, key) in abn.model" @click="go();">{{abm.title}}</el-menu-item>
             </el-submenu>
 	      </el-submenu>
 	  </el-menu>
@@ -154,6 +154,7 @@ export default {
         {
           'name': '小米',
           'model': [
+            { 'title': 'Xiaomi CC9' },
             { 'title': 'Xiaomi 9' },
             { 'title': 'Xiaomi 8' },
             { 'title': 'Xiaomi 6' },
@@ -186,6 +187,9 @@ export default {
           center: true
         });
     },
+    go () {
+      this.$router.push("/details/0")
+    }
   }
 }
 </script>

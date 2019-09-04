@@ -2,19 +2,19 @@
   <div class="details">
     <div class="header">
       <el-carousel>
-        <el-carousel-item v-for="item in coverimg" :key="item">
+        <el-carousel-item v-for="item in msg[id].coverimg" :key="item">
           <img class="coverimg" :src="item.src" alt="background">
         </el-carousel-item>
       </el-carousel>
-      <p class="title">小米CC9美图定制版（8GB/256GB/全网通）参数</p>
-      <router-link class="closelink" to="main">
+      <p class="title">{{msg[id].title}}</p>
+      <router-link class="closelink" to="/">
         <el-link icon="el-icon-close">关闭</el-link>
       </router-link>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
           <span style="font-size: 16px;">重要参数</span>
         </div>
-        <div v-for="o in msg" :key="o" class="text item">
+        <div v-for="o in msg[id].msg2" :key="o" class="text item">
           <p>{{o.title}}{{o.list}}</p>
         </div>
         <el-rate
@@ -49,6 +49,7 @@ export default {
   },
   data () {
     return {
+      id: '',
       value: 3.7,
       title: [
         '小米CC9评测:为了捉住少男少女的心 小米酿了瓶新酒',
@@ -60,49 +61,147 @@ export default {
         'https://baijiahao.baidu.com/s?id=1638031418710807594&wfr=spider&for=pc',
         'https://laoyaoba.com/html/news/newsdetail?source=pc&news_id=722764',
       ],
-      coverimg: [
-        {
-          'src': '/img/Moblie-phone/小米/CC9/cover_1.jpg'
-        },
-        {
-          'src': '/img/Moblie-phone/小米/CC9/cover_2.jpg'
-        },
-        {
-          'src': '/img/Moblie-phone/小米/CC9/cover_3.jpg'
-        }
-      ],
       msg: [
         {
-          'title': 'CPU ：',
-          'list': '高通 骁龙710',
+          'title': '小米CC9美图定制版（8GB/256GB/全网通）参数',
+          'coverimg': [
+                        {
+                          'src': '/img/Moblie-phone/小米/CC9/cover_1.jpg'
+                        },
+                        {
+                          'src': '/img/Moblie-phone/小米/CC9/cover_2.jpg'
+                        },
+                        {
+                          'src': '/img/Moblie-phone/小米/CC9/cover_3.jpg'
+                        }
+                      ],
+          'msg2': [
+                    {
+                      'title': 'CPU ：',
+                      'list': '高通 骁龙710',
+                    },
+                    {
+                      'title': '后置 ：',
+                      'list': '4800万像素超高清摄像头+800万像素超广角摄像头+200万像素景深镜头',
+                    },
+                    {
+                      'title': '前置 ：',
+                      'list': '3200万像素',
+                    },
+                    {
+                      'title': '内存 ：',
+                      'list': '8GB',
+                    },
+                    {
+                      'title': '电池 ：',
+                      'list': '4030mAh',
+                    },
+                    {
+                      'title': '屏幕 ：',
+                      'list': '6.39英寸',
+                    },
+                    {
+                      'title': '分辨率 ：',
+                      'list': '2340x1080像素',
+                    },
+                  ],
         },
         {
-          'title': '后置 ：',
-          'list': '4800万像素超高清摄像头+800万像素超广角摄像头+200万像素景深镜头',
+          'title': '魅族16s (6GB+128GB/全网通）参数',
+          'coverimg': [
+                        {
+                          'src': '/img/Moblie-phone/魅族/16s/cover_1.jpg'
+                        },
+                        {
+                          'src': '/img/Moblie-phone/魅族/16s/cover_2.jpg'
+                        },
+                        {
+                          'src': '/img/Moblie-phone/魅族/16s/cover_3.jpg'
+                        }
+                      ],
+          'msg2': [
+                    {
+                      'title': 'CPU ：',
+                      'list': '高通 骁龙710',
+                    },
+                    {
+                      'title': '后置 ：',
+                      'list': '4800万像素超高清摄像头+800万像素超广角摄像头+200万像素景深镜头',
+                    },
+                    {
+                      'title': '前置 ：',
+                      'list': '3200万像素',
+                    },
+                    {
+                      'title': '内存 ：',
+                      'list': '8GB',
+                    },
+                    {
+                      'title': '电池 ：',
+                      'list': '4030mAh',
+                    },
+                    {
+                      'title': '屏幕 ：',
+                      'list': '6.39英寸',
+                    },
+                    {
+                      'title': '分辨率 ：',
+                      'list': '2340x1080像素',
+                    },
+                  ],
         },
         {
-          'title': '前置 ：',
-          'list': '3200万像素',
+          'title': '一加7 (8GB+256GB/全网通）参数',
+          'coverimg': [
+                        {
+                          'src': '/img/Moblie-phone/一加/OnePlus7/cover_1.jpg'
+                        },
+                        {
+                          'src': '/img/Moblie-phone/一加/OnePlus7/cover_2.jpg'
+                        },
+                        {
+                          'src': '/img/Moblie-phone/一加/OnePlus7/cover_3.jpg'
+                        }
+                      ],
+          'msg2': [
+                    {
+                      'title': 'CPU ：',
+                      'list': '高通 骁龙710',
+                    },
+                    {
+                      'title': '后置 ：',
+                      'list': '4800万像素超高清摄像头+800万像素超广角摄像头+200万像素景深镜头',
+                    },
+                    {
+                      'title': '前置 ：',
+                      'list': '3200万像素',
+                    },
+                    {
+                      'title': '内存 ：',
+                      'list': '8GB',
+                    },
+                    {
+                      'title': '电池 ：',
+                      'list': '4030mAh',
+                    },
+                    {
+                      'title': '屏幕 ：',
+                      'list': '6.39英寸',
+                    },
+                    {
+                      'title': '分辨率 ：',
+                      'list': '2340x1080像素',
+                    },
+                  ],
         },
-        {
-          'title': '内存 ：',
-          'list': '8GB',
-        },
-        {
-          'title': '电池 ：',
-          'list': '4030mAh',
-        },
-        {
-          'title': '屏幕 ：',
-          'list': '6.39英寸',
-        },
-        {
-          'title': '分辨率 ：',
-          'list': '2340x1080像素',
-        },
-      ],
+      ]
     }
   },
+  mounted () {
+    this.$nextTick(function () {
+      this.id = this.$route.params.id
+    })
+  }
 }
 </script>
 

@@ -13,7 +13,7 @@ import details from './components/Details.vue'
 
 // 2、配置路由
 const routes = [
-	{ path: '/details', component: details },
+	{ path: '/details/:id', component: details },
 	// { path: '*', redirect: 'index' }  /*默认跳转路由*/
 ]
 
