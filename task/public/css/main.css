@@ -37,3 +37,14 @@
 	position: relative;
 	height: 100%;
 }
+.compared .el-button--primary {
+  position: absolute;
+  left: 2%;
+  top: 35px;
+}
+.el-button--danger {
+  position: absolute;
+  left: 2%;
+  top: 85px;
+  padding: 10px 23px;
+}

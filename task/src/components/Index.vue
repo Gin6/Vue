@@ -36,7 +36,6 @@
   <el-drawer
       :visible.sync="drawerttb"
       :direction="directionttb"
-      :before-close="handleClose"
       :show-close="showclose"
       :modal="modalttb"
       :custom-class="eldrawerttb">  <!-- 搜索框 -->
@@ -46,13 +45,10 @@
 	  title="Mobile Phone Brands"
 	  :visible.sync="drawer"
 	  :direction="direction"
-	  :before-close="handleClose"
     :destroy-on-close="destroyonclose">  <!-- 侧栏 -->
 	  <el-menu
       default-active="2"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose">
+      class="el-menu-vertical-demo">
 	      <el-submenu index="1">
 	        <template slot="title">
 	          <i class="el-icon-location"></i>

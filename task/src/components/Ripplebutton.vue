@@ -12,7 +12,6 @@
       title="MYPHONE"
       :visible.sync="drawer"
       :direction="direction"
-      :before-close="handleClose"
       :destroy-on-close="destroyonclose"
       :custom-class="customclass">
       <v-main></v-main>

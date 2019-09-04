@@ -11,7 +11,7 @@
       </div>
       <div class="select-right select-lr"></div>
       <el-breadcrumb separator-class="el-icon-arrow-right">
-        <button class="remove" @click="remove()"></button>
+        <button ref="remove" class="remove" @click="remove()"></button>
         <el-breadcrumb-item>全部</el-breadcrumb-item>
         <el-breadcrumb-item v-for="msg in msg">{{msg}}</el-breadcrumb-item>
       </el-breadcrumb>
@@ -50,10 +50,31 @@
               </div>
             </a>
           </router-link>
-          <el-checkbox label="对比"></el-checkbox>
+          <el-checkbox :label="index" @change="compared()" v-model="checked">对比</el-checkbox>
         </el-card>
       </el-col>
       <router-view></router-view>
+    </div>
+    <div ref="compared" class="compared">
+      <a class="close" @click="close()"><i class="el-icon-close"></i></a>
+      <a ref="down" class="down" @click="down()" v-model="d"><i :class="{'el-icon-arrow-down': isActive, 'el-icon-minus': isError}"></i></a>
+      <el-button type="primary" plain>开始对比</el-button>
+      <el-button type="danger" plain>清空对比栏</el-button>
+      <div class="box1 box">
+        <p class="num">1</p>
+        <div class="i"><img src="/img/Moblie-phone/小米/CC9/cover_1.jpg"></div>
+        <p>小米(MI) 小米CC9</p>
+        <div class="h"><button><i class="el-icon-delete"></i></button></div>
+      </div>
+      <div class="box2 box">
+        <p class="num">2</p>
+      </div>
+      <div class="box3 box">
+        <p class="num">3</p>
+      </div>
+      <div class="box4 box">
+        <p class="num">4</p>
+      </div>
     </div>
     <v-footer></v-footer>
   </div>
@@ -68,8 +89,12 @@ export default {
   },
   data () {
     return {
+      isActive: true,
+      isError: false,
       value: 3.7,
+      checked: [],
       activeIndex: '1',
+      d: true,
       currentDate: new Date(),
       msg: [],
       msg1: [],
@@ -147,19 +172,17 @@ export default {
       // }
     },
     set () {
-      var a = document.getElementsByClassName("remove")[0];
-      a.style.cssText = "z-index: 0;";
+      this.$refs.remove.style.cssText = "z-index: 0;";
     },
     remove () {
       var l = this.msg.length;
       var k = this.msg1.length;
-      var a = document.getElementsByClassName("remove")[0];
       var b = document.getElementsByClassName("el-button--text");
       for (var i = 0; i < b.length; i++) {
         b[i].disabled = false;
         b[i].style.color = '#409effd4';
       };
-      a.style.cssText = "z-index: -1;";
+      this.$refs.remove.style.cssText = "z-index: -1;";
       this.msg.splice(0, l);
       this.msg1.splice(0, k);
     },
@@ -168,8 +191,35 @@ export default {
     },
     scrollWindow () {
       document.getElementsByClassName('abc')[0].scrollTo(0, 424);
+    },
+    compared () {
+      this.$refs.compared.style.bottom = "0px";
+      this.d = true;
+      this.isActive = true;
+      this.isError = false;
+    },
+    close () {
+      var c = this.checked;
+      var l = c.length;
+      this.$refs.compared.style.bottom = "-150px";
+      c.splice(0, l);
+      this.isActive = true;
+      this.isError = false;
+    },
+    down () {
+      if (this.d == true) {
+        this.$refs.compared.style.bottom = "-120px";
+        this.d = false;
+        this.isActive = false;
+        this.isError = true;
+      }else {
+        this.$refs.compared.style.bottom = "0px";
+        this.d = true;
+        this.isActive = true;
+        this.isError = false;
+      }
     }
-  }
+  },
 }
 
 </script>
